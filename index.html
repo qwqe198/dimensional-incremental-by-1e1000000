@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title id="z">1.00 点, 0 点</title>
+
+    <!-- 导入网页样式表 -->
+    <link rel="stylesheet" href="style.css" />
+    <style>@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Cousine&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');</style>
+
+    <style>@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Chivo&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Quantico&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=B612&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');</style>
+
+    <style>@import url('https://fonts.googleapis.com/css2?family=Oxanium&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Offside&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Share&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');</style>
+  </head>
+  <body>
+    <!-- 内容开始 -->
+    <div class="center">
+      <div id="topbar">
+        <div id="news"></div>
+      </div>
+      <span id="offMsg" style="font-size: 14px;">模拟速度: <b id="offSpeed" style="font-size: 18px;"></b>x<br></span>
+      <span id="speedMsg" style="font-size: 14px;">游戏速度: <b id="gameSpeed" style="font-size: 18px;"></b>x, 开发速度: <b id="devSpeed" style="font-size: 18px;"></b>x<br></span>
+      <span style="font-size: 20px;"><text id="ptsPrefix">你有 </text><b id="points" style="font-size: 30px;"></b><text id="ptsSuffix"> 点</text><br>(<b id="pps"></b>/秒)</span>
+      <span id="ptsSC" style="font-size: 15px;color:red;font-weight:bold;"></span>
+    </div>
+    <br>
+    <table class="center"><tr>
+      <td>
+        <button onclick="tab(1)" id="tab1" class="tabButtonWide">声望层级</button>
+      </td>
+      <td>
+        <button onclick="tab(2)" id="tab2" class="tabButtonWide">维度转换</button>
+      </td>
+      <td>
+        <button onclick="tab(0)" id="tab0" class="tabButton">选项</button>
+      </td>
+      <td>
+        <button onclick="tab(100)" id="tab100" class="tabButton">统计</button>
+      </td>
+    </tr>
+    </table><br>
+    <div id="Tab1" class="center">
+      <table class="center"><tr>
+        <td>
+          <button onclick="subtab(1,1)" id="tab1st1" class="subtabButton center">点</button>
+        </td>
+        <td>
+          <button onclick="subtab(1,2)" id="tab1st2" class="subtabButton center">线</button>
+        </td></tr>
+      </table><br>
+    <div id="Tab1St1" class="center">
+      你有 <b id="layer1amt" style="font-size: 24px;"></b> 点, 每秒生成 <b id="layer1eff" style="font-size: 24px;"></b> 点。<br>
+      <span id="layer1sc" class="resSoftcap"></span>
+      <button onclick="LAYERS.doReset(1)" id="layer1reset" class="layerButton">
+        重置获得 <b id="layer1gain"></b> 点<br>
+        <span id="layer1extra">需要</span> <b id="layer1base"></b>/<b id="layer1req"></b> 点
+      </button>
+      <br><br>
+      <table class="center"><tr>
+        <td>
+          <button onclick="buyUpgrade(1,1)" id="layer1upg1" class="upgradeButton">
+            <span id="layer1upg1desc"></span><span id="layer1upg1eff"></span><br><br>成本: <span id="layer1upg1cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,2)" id="layer1upg2" class="upgradeButton">
+            <span id="layer1upg2desc"></span><span id="layer1upg2eff"></span><br><br>成本: <span id="layer1upg2cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,3)" id="layer1upg3" class="upgradeButton">
+            <span id="layer1upg3desc"></span><span id="layer1upg3eff"></span><br><br>成本: <span id="layer1upg3cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,4)" id="layer1upg4" class="upgradeButton">
+            <span id="layer1upg4desc"></span><span id="layer1upg4eff"></span><br><br>成本: <span id="layer1upg4cost"></span>.
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button onclick="buyUpgrade(1,5)" id="layer1upg5" class="upgradeButton">
+            <span id="layer1upg5desc"></span><span id="layer1upg5eff"></span><br><br>成本: <span id="layer1upg5cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,6)" id="layer1upg6" class="upgradeButton">
+            <span id="layer1upg6desc"></span><span id="layer1upg6eff"></span><br><br>成本: <span id="layer1upg6cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,7)" id="layer1upg7" class="upgradeButton">
+            <span id="layer1upg7desc"></span><span id="layer1upg7eff"></span><br><br>成本: <span id="layer1upg7cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,8)" id="layer1upg8" class="upgradeButton">
+            <span id="layer1upg8desc"></span><span id="layer1upg8eff"></span><br><br>成本: <span id="layer1upg8cost"></span>.
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button onclick="buyUpgrade(1,9)" id="layer1upg9" class="upgradeButton">
+            <span id="layer1upg9desc"></span><span id="layer1upg9eff"></span><br><br>成本: <span id="layer1upg9cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,10)" id="layer1upg10" class="upgradeButton">
+            <span id="layer1upg10desc"></span><span id="layer1upg10eff"></span><br><br>成本: <span id="layer1upg10cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,11)" id="layer1upg11" class="upgradeButton">
+            <span id="layer1upg11desc"></span><span id="layer1upg11eff"></span><br><br>成本: <span id="layer1upg11cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,12)" id="layer1upg12" class="upgradeButton">
+            <span id="layer1upg12desc"></span><span id="layer1upg12eff"></span><br><br>成本: <span id="layer1upg12cost"></span>.
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button onclick="buyUpgrade(1,13)" id="layer1upg13" class="upgradeButton">
+            <span id="layer1upg13desc"></span><span id="layer1upg13eff"></span><br><br>成本: <span id="layer1upg13cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,14)" id="layer1upg14" class="upgradeButton">
+            <span id="layer1upg14desc"></span><span id="layer1upg14eff"></span><br><br>成本: <span id="layer1upg14cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,15)" id="layer1upg15" class="upgradeButton">
+            <span id="layer1upg15desc"></span><span id="layer1upg15eff"></span><br><br>成本: <span id="layer1upg15cost"></span>.
+          </button>
+        </td>
+        <td>
+          <button onclick="buyUpgrade(1,16)" id="layer1upg16" class="upgradeButton">
+            <span id="layer1upg16desc"></span><span id="layer1upg16eff"></span><br><br>成本: <span id="layer1upg16cost"></span>.
+          </button>
+        </td>
+      </tr>
+    </table>
+    </div>
+    <div id="Tab1St2" class="center">
+      你有 <b id="layer2amt" style="font-size: 24px;"></b> 线, 基于点数将点获取量乘以 <b id="layer2eff" style="font-size: 24px;"></b>。<br>
+      <span id="layer2sc" class="resSoftcap"></span>
+      <button onclick="LAYERS.doReset(2)" id="layer2reset" class="layerButton">
+        重置获得 <b id="layer2gain"></b> 线<br>
+        <span id="layer2extra">需要</span> <b id="layer2base"></b>/<b id="layer2req"></b> 点
+      </button>
+      <br><br>
+      <table class="center"><tr>
+        <td>
+          <button onclick="subsubtab(1,2,1)" id="tab1st2_1" class="subsubtabButton center">里程碑</button>
+        </td>
+        <td>
+          <button onclick="subsubtab(1,2,2)" id="tab1st2_2" class="subsubtabButton center">线段</button>
+        </td>
+        <td>
+          <button onclick="subsubtab(1,2,3)" id="tab1st2_3" class="subsubtabButton center">字符串</button>
+        </td>
+      </tr>
+      </table><br>
+      <div id="Tab1St2_1" class="center">
+        <table class="center milestoneTable">
+          <tr id="layer2milestone1">
+            <td id="layer2milestone1req"></td>
+            <td id="layer2milestone1desc"></td>
+          </tr>
+          <tr id="layer2milestone2">
+            <td id="layer2milestone2req"></td>
+            <td id="layer2milestone2desc"></td>
+          </tr>
+          <tr id="layer2milestone3">
+            <td id="layer2milestone3req"></td>
+            <td id="layer2milestone3desc"></td>
+          </tr>
+          <tr id="layer2milestone4">
+            <td id="layer2milestone4req"></td>
+            <td id="layer2milestone4desc"></td>
+          </tr>
+          <tr id="layer2milestone5">
+            <td id="layer2milestone5req"></td>
+            <td id="layer2milestone5desc"></td>
+          </tr>
+          <tr id="layer2milestone6">
+            <td id="layer2milestone6req"></td>
+            <td id="layer2milestone6desc"></td>
+          </tr>
+          <tr id="layer2milestone7">
+            <td id="layer2milestone7req"></td>
+            <td id="layer2milestone7desc"></td>
+          </tr>
+          <tr id="layer2milestone8">
+            <td id="layer2milestone8req"></td>
+            <td id="layer2milestone8desc"></td>
+          </tr>
+          <tr id="layer2milestone9">
+            <td id="layer2milestone9req"></td>
+            <td id="layer2milestone9desc"></td>
+          </tr>
+          <tr id="layer2milestone10">
+            <td id="layer2milestone10req"></td>
+            <td id="layer2milestone10desc"></td>
+          </tr>
+          <tr id="layer2milestone11">
+            <td id="layer2milestone11req"></td>
+            <td id="layer2milestone11desc"></td>
+          </tr>
+          <tr id="layer2milestone12">
+            <td id="layer2milestone12req"></td>
+            <td id="layer2milestone12desc"></td>
+          </tr>
+          <tr id="layer2milestone13">
+            <td id="layer2milestone13req"></td>
+            <td id="layer2milestone13desc"></td>
+          </tr>
+          <tr id="layer2milestone14">
+            <td id="layer2milestone14req"></td>
+            <td id="layer2milestone14desc"></td>
+          </tr>
+        </table>
+      </div>
+      <div id="Tab1St2_2" class="center">
+        你有 <b id="lineSegAmt" style="font-size: 24px;"></b> 线段 (<span id="lineSegProd"></span>/秒), 将点获取量提高 <b id="lineSegEff" style="font-size: 24px;"></b>。<br>
+        线段获取公式: <b>(<span id="lineSegMulti">1.00</span>*log<sub>10</sub>(点)<sup id="lineSegExp1">0</sup>线<sup id="lineSegExp2">1</sup>)<sup id="lineSegPow">1</sup></b>。<br>线段上限为 <span id="lineSegCap"></span> 秒的产量。<br>
+        <table class="center"><tr>
+          <td>
+            <button onclick="buyBuyable(2,1)" id="layer2buyable1" class="buyableButton">
+              <span id="layer2buyable1desc"></span><br><span id="layer2buyable1eff"></span><br>等级 <span id="layer2buyable1level"></span><br><br>成本: <span id="layer2buyable1cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyBuyable(2,2)" id="layer2buyable2" class="buyableButton">
+              <span id="layer2buyable2desc"></span><br><span id="layer2buyable2eff"></span><br>等级 <span id="layer2buyable2level"></span><br><br>成本: <span id="layer2buyable2cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyBuyable(2,3)" id="layer2buyable3" class="buyableButton">
+              <span id="layer2buyable3desc"></span><br><span id="layer2buyable3eff"></span><br>等级 <span id="layer2buyable3level"></span><br><br>成本: <span id="layer2buyable3cost"></span>.
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="buyBuyable(2,4)" id="layer2buyable4" class="buyableButton">
+              <span id="layer2buyable4desc"></span><br><span id="layer2buyable4eff"></span><br>等级 <span id="layer2buyable4level"></span><br><br>成本: <span id="layer2buyable4cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyBuyable(2,5)" id="layer2buyable5" class="buyableButton">
+              <span id="layer2buyable5desc"></span><br><span id="layer2buyable5eff"></span><br>等级 <span id="layer2buyable5level"></span><br><br>成本: <span id="layer2buyable5cost"></span>.
+            </button>
+          </td>
+        </tr>
+        </table>
+        <br>
+        <table class="center"><tr>
+          <td>
+            <button onclick="buyUpgrade(2,1)" id="layer2upg1" class="upgradeButton">
+              <span id="layer2upg1desc"></span><span id="layer2upg1eff"></span><br><br>成本: <span id="layer2upg1cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyUpgrade(2,2)" id="layer2upg2" class="upgradeButton">
+              <span id="layer2upg2desc"></span><span id="layer2upg2eff"></span><br><br>成本: <span id="layer2upg2cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyUpgrade(2,3)" id="layer2upg3" class="upgradeButton">
+              <span id="layer2upg3desc"></span><span id="layer2upg3eff"></span><br><br>成本: <span id="layer2upg3cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyUpgrade(2,4)" id="layer2upg4" class="upgradeButton">
+              <span id="layer2upg4desc"></span><span id="layer2upg4eff"></span><br><br>成本: <span id="layer2upg4cost"></span>.
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="buyUpgrade(2,5)" id="layer2upg5" class="upgradeButton">
+              <span id="layer2upg5desc"></span><span id="layer2upg5eff"></span><br><br>成本: <span id="layer2upg5cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyUpgrade(2,6)" id="layer2upg6" class="upgradeButton">
+              <span id="layer2upg6desc"></span><span id="layer2upg6eff"></span><br><br>成本: <span id="layer2upg6cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyUpgrade(2,7)" id="layer2upg7" class="upgradeButton">
+              <span id="layer2upg7desc"></span><span id="layer2upg7eff"></span><br><br>成本: <span id="layer2upg7cost"></span>.
+            </button>
+          </td>
+          <td>
+            <button onclick="buyUpgrade(2,8)" id="layer2upg8" class="upgradeButton">
+              <span id="layer2upg8desc"></span><span id="layer2upg8eff"></span><br><br>成本: <span id="layer2upg8cost"></span>.
+            </button>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div id="Tab1St2_3" class="center">
+        你有 <b id="stringLength" style="font-size: 24px;"></b> 字符串, 将线段获取量和效果提高 <b id="stringEff" style="font-size: 24px;"></b>。<br>
+        <button onclick="LAYERS.stringReset()" id="stringReset" class="layerButton">
+          重置线段以延长字符串长度 <b id="stringGain"></b><br>
+          下次在 <b id="lineSegAmt2"></b>/<b id="stringReq"></b> 线段
+        </button>
+      </div>
+    </div>
+
+    </div>
+    <div id="Tab0" class="center">
+      <table class="center">
+        <b style="font-size: 24px;">保存</b>
+        <tr>
+          <td>
+            <button onclick="save()" id="save0" class="saveButton" style="border-color: #0000FF">保存</button>
+          </td>
+          <td>
+            <button onclick="exportGame()" id="save1" class="saveButton" style="border-color: #00FF00">导出</button>
+          </td>
+          <td>
+            <button onclick="importGame()" id="save2" class="saveButton" style="border-color: #00FF00">导入</button>
+          </td>
+          <td>
+            <button onclick="hardReset()" id="save3" class="saveButton" style="width: 120px;border-color: #FF0000">硬重置</button>
+          </td>
+        </tr>
+      </table><br>
+      <table class="center">
+        <b style="font-size: 24px;">数字格式</b>
+        <tr>
+          <td></td>
+          <td>
+            表示法:<br><select name="notation" id="notation-select" class="select">
+              <optGroup id="notationOptG1" style="color:green" label="正式">
+                <option value=0 id="notationOpt0" style="color:green">默认</option>
+                <option value=1 id="notationOpt1" style="color:green">标准</option>
+                <option value=2 id="notationOpt2" style="color:green">混合</option>
+                <option value=3 id="notationOpt3" style="color:green">上箭头</option>
+                <option value=4 id="notationOpt4" style="color:green">标准(上箭头)</option>
+                <option value=5 id="notationOpt5" style="color:green">混合(上箭头)</option>
+                <option value=6 id="notationOpt6" style="color:green">鸟之数组</option>
+                <option value=7 id="notationOpt7" style="color:green">字母(UCF)</option>
+                <option value=8 id="notationOpt8" style="color:green">字母(BCF)</option>
+              </optGroup>
+              <optGroup id="notationOptG2" style="color:maroon" label="玩笑">
+                <option value=9 id="notationOpt9" style="color:maroon">数字恶搞</option>
+                <option value=10 id="notationOpt10" style="color:maroon">字母恶搞</option>
+                <option value=11 id="notationOpt11" style="color:maroon">Base64</option>
+                <option value=12 id="notationOpt12" style="color:maroon">反向</option>
+                <option value=13 id="notationOpt13" style="color:maroon">???</option>
+              </optGroup>
+            </select>
+          </td>
+          <td>
+            <button onclick="changeOption(2)" class="optionButton">在 e3e<span id="accuracy5_1"></span> 后显示标准表示法: <b id="option2">关闭</b></button>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="changeAccuracyOptionButton(0)" class="optionButton">精度(基础): <b id="accuracy0">2</b></button>
+          </td>
+          <td>
+            <button onclick="changeAccuracyOptionButton(1)" class="optionButton">精度(e): <b id="accuracy1">3</b></button>
+          </td>
+          <td>
+            <button onclick="changeAccuracyOptionButton(2)" class="optionButton">精度(F,G,H): <b id="accuracy2">4</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="changeAccuracyOptionButton(3)" class="optionButton">精度(J,K): <b id="accuracy3">6</b></button>
+          </td>
+          <td>
+            <button onclick="changeAccuracyOptionButton(4)" class="optionButton">到下一个字母的数量: <b id="accuracy4">5</b></button>
+          </td>
+          <td>
+            <button onclick="changeAccuracyOptionButton(5)" class="optionButton">到下一个数字的指数: <b id="accuracy5">9</b></button>
+          </td>
+        </tr>
+      </table><br>
+      <table class="center">
+        <b style="font-size: 24px;">字体设置</b><br>
+        当前字体: <span id="currFont"></span><br><br>
+        <tr>
+          <td></td>
+          <td><b style="font-size: 18px;">等宽</b></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Consolas'" class="saveButtonLong" style="font-family:'Consolas'"><b>Consolas</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Courier Prime'" class="saveButtonLong" style="font-family:'Courier Prime'"><b>Courier Prime</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Cousine'" class="saveButtonLong" style="font-family:'Cousine'"><b>Cousine</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'JetBrains Mono'" class="saveButtonLong" style="font-family:'JetBrains Mono'"><b>JetBrains Mono</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Larabie Font'" class="saveButtonLong" style="font-family:'Larabie Font'"><b>Larabie Font</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Monospace-Typewritter'" class="saveButtonLong" style="font-family:'Monospace-Typewritter'"><b>Monospace Typewritter</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Nova Mono'" class="saveButtonLong" style="font-family:'Nova Mono'"><b>Nova Mono</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Overpass Mono'" class="saveButtonLong" style="font-family:'Overpass Mono'"><b>Overpass Mono</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Oxygen Mono'" class="saveButtonLong" style="font-family:'Oxygen Mono'"><b>Oxygen Mono</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Roboto Mono'" class="saveButtonLong" style="font-family:'Roboto Mono'"><b>Roboto Mono</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Ubuntu Mono'" class="saveButtonLong" style="font-family:'Ubuntu Mono'"><b>Ubuntu Mono</b></button>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b style="font-size: 18px;">无衬线</b></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Abel'" class="saveButtonLong" style="font-family:'Abel'"><b>Abel</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'B612'" class="saveButtonLong" style="font-family:'B612'"><b>B612</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Chivo'" class="saveButtonLong" style="font-family:'Chivo'"><b>Chivo</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'IBM Plex Sans'" class="saveButtonLong" style="font-family:'IBM Plex Sans'"><b>IBM Plex Sans</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Inter'" class="saveButtonLong" style="font-family:'Inter'"><b>Inter</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Lato'" class="saveButtonLong" style="font-family:'Lato'"><b>Lato</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Monda'" class="saveButtonLong" style="font-family:'Monda'"><b>Monda</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Montserrat'" class="saveButtonLong" style="font-family:'Montserrat'"><b>Montserrat</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Open Sans'" class="saveButtonLong" style="font-family:'Open Sans'"><b>Open Sans</b></button>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Play'" class="saveButtonLong" style="font-family:'Play'"><b>Play</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Quantico'" class="saveButtonLong" style="font-family:'Quantico'"><b>Quantico</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Questrial'" class="saveButtonLong" style="font-family:'Questrial'"><b>Questrial</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Recursive'" class="saveButtonLong" style="font-family:'Recursive'"><b>Recursive</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Roboto'" class="saveButtonLong" style="font-family:'Roboto'"><b>Roboto</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Sawarabi Gothic'" class="saveButtonLong" style="font-family:'Sawarabi Gothic'"><b>Sawarabi Gothic</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Segoe UI'" class="saveButtonLong" style="font-family:'Segoe UI'"><b>Segoe UI</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Source Sans Pro'" class="saveButtonLong" style="font-family:'Source Sans Pro'"><b>Source Sans Pro</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Verdana'" class="saveButtonLong" style="font-family:'Verdana'"><b>Verdana</b></button>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b style="font-size: 18px;">其他</b></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Iceberg'" class="saveButtonLong" style="font-family:'Iceberg'"><b>Iceberg</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Noto Serif'" class="saveButtonLong" style="font-family:'Noto Serif'"><b>Noto Serif</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Offside'" class="saveButtonLong" style="font-family:'Offside'"><b>Offside</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="player.options.font = 'Oxanium'" class="saveButtonLong" style="font-family:'Oxanium'"><b>Oxanium</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = 'Share'" class="saveButtonLong" style="font-family:'Share'"><b>Share</b></button>
+          </td>
+          <td>
+            <button onclick="player.options.font = ''" class="saveButtonLong" style="font-family:''"><b>Google 默认</b></button>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+      </table><br>
+      <table class="center">
+        <b style="font-size: 24px;">其他</b>
+        <tr>
+          <td>
+            <button onclick="changeOption(1)" class="optionButton" style="width: 240px;height: 50px;">在控制台显示保存信息:<br><b id="option1">关闭</b></button>
+          </td>
+        </tr>
+      </table><br>
+      <b style="font-size: 18px;">制作人员:</b><br>
+      Naruyoko 提供 <a href="https://github.com/Naruyoko/ExpantaNum.js">ExpantaNum.js</a>。<br>
+      cloudytheconqueror 提供 <a href="https://github.com/cloudytheconqueror/letter-notation-format">format-expantanum.js</a>, 由我扩展。<br>
+      Hevipelle 提供新闻滚动代码, 由 Aarex 扩展。<br>
+      MrRedShark77 提供多字体代码和保存代码。<br><br>
+      终局: <span id="endgame"></span><br>
+      终局进度: <b id="endgameProgression"></b>%<br><br>
+      游戏版本: <a href="https://1e1000000.github.io/dimensional-incremental/changelog.html">v<span id="ver"></span></a> (点击版本查看更新日志)
+    </div>
+    <div id="Tab2" class="center">
+      你有 <b id="dimShiftAmt" style="font-size: 24px;"></b> 次维度转换。<br>
+      <button onclick="buyDimShift()" id="dimShift" class="layerButton">
+        购买一次维度转换<br>
+        需要: <b id="dimShiftReq"></b> 点
+      </button>
+    </div>
+    <div id="Tab100" class="center">
+      <text id="stats"></text>
+    </div>
+    <br><br>
+  </body>
+</html>
+
+    <!-- 导入网页的javascript文件 -->
+    <script src="js/ExpantaNum.js" defer></script>
+    <script src="js/format-expantanum.js" defer></script>
+    <script src="js/mathfunc.js" defer></script>
+    <script src="js/tab.js" defer></script>
+    <script src="js/save.js" defer></script>
+    <script src="js/layer.js" defer></script>
+    <script src="js/temp.js" defer></script>
+    <script src="js/function.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/newsticker.js"></script>

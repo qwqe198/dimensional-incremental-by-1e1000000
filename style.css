@@ -1,0 +1,295 @@
+/* a minimalist set of CSS resets */
+
+/* default to border-box */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* adjust typography defaults */
+:root{
+  --font: 
+}
+
+@font-face {
+  font-family: "Monospace-Typewritter";
+  src: url('font/MonospaceTypewriter.ttf');
+}
+
+@font-face {
+  font-family: "Verdana";
+  src: url('font/verdana.ttf');
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: url('font/SegoeUI.TTF');
+}
+
+@font-face {
+  font-family: "Larabie Font";
+  src: url('font/larabiefont rg.ttf');
+}
+
+@font-face {
+  font-family: "Consolas";
+  src: url('font/CONSOLA.TTF');
+}
+
+body {
+  margin: 1rem;
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+button {
+  font-family: var(--font);
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+select {
+  font-family: var(--font);
+  font-weight: bold;
+  line-height: 1.5;
+  font-size: 13px;
+  border-radius: 1000px;
+  border-color: #000000;
+  cursor: pointer;
+  height: 20px;
+  width: 190px;
+  padding-left: 5px;
+}
+
+.tabButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 1000px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  height: 50px;
+  width: 120px;
+  font-weight: bold;  
+}
+
+.tabButton:hover {
+  background: #CCCCCC;
+}
+
+.tabButtonWide {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 1000px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  height: 50px;
+  width: 200px;
+  font-weight: bold;  
+}
+
+.tabButtonWide:hover {
+  background: #CCCCCC;
+}
+
+.subtabButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 1000px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  height: 40px;
+  width: 90px;
+  font-weight: bold;  
+}
+
+.subtabButton:hover {
+  background: #CCCCCC;
+}
+
+.subsubtabButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 1000px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  height: 30px;
+  width: 150px;
+}
+
+.subsubtabButton:hover {
+  background: #CCCCCC;
+}
+
+.layerButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  height: 60px;  
+}
+
+.layerButton:hover {
+  background: #CCCCCC;
+}
+
+.saveButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 1000px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition-duration: 0.1s;
+  height: 30px;
+  width: 80px;
+}
+
+.saveButton:hover {
+  background: #CCCCCC;
+}
+
+.saveButtonLong {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 1000px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition-duration: 0.1s;
+  height: 30px;
+  width: 200px;
+}
+
+.saveButtonLong:hover {
+  background: #CCCCCC;
+}
+
+.optionButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 1000px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition-duration: 0.1s;
+  height: 50px;
+  width: 200px;
+}
+
+.optionButton:hover {
+  background: #CCCCCC;
+}
+
+.noHoverButton:hover {
+  background: inherit;
+}
+
+.upgradeButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  height: 180px;
+  width: 180px; 
+  font-size: 12px;
+}
+
+.upgradeButton:not(.bought):hover{
+  background-color: #CCCCCC;
+}
+
+.upgradeButton.bought{
+  background-color: #00FF00;
+}
+
+.center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#table{
+  display: table;
+}
+
+.milestoneTable td{
+  border: 1px solid black;
+  padding: 5px;
+  width: 480px;
+  display: table-cell;
+}
+
+.milestoneTable tr{
+  display: table-row;
+}
+
+.milestoneTable tr:nth-child(even){
+  background-color: #e7e7e7;
+}
+
+.milestoneTable tr:hover {
+  background-color: #CCCCCC;
+}
+
+.buyableButton {
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border-color: #000000;
+  border-weight: 10px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  height: 240px;
+  width: 240px; 
+  font-size: 12px;
+}
+
+.buyableButton:hover {
+  background-color: #CCCCCC;
+}
+
+.resSoftcap {
+  color: red;
+  font-size: 16px;
+}
+
+#news {
+  color: #000000;
+  /*transition: transform 1s;*/
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  white-space: nowrap;
+  font-weight: bold
+}
+
+#topbar {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 2px;
+  width: 75%;
+  overflow: hidden;
+  margin: auto;
+  text-align: left
+}
