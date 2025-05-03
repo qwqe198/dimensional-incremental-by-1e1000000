@@ -533,7 +533,7 @@ function getBaseBuyableCost(layer,id){ // 等级1的成本
         }
 }
 
-function getBuyableCostScaling(layer,id){ // 成本缩放
+function getBuyableCostScaling(layer,id){ // 成本折算
     let x
     switch(layer) {
         case 2:
@@ -568,7 +568,7 @@ function getBuyableCostScaling(layer,id){ // 成本缩放
         }
 }
 
-function getBuyableCostExp(layer,id){ // 缩放指数
+function getBuyableCostExp(layer,id){ // 折算指数
     switch(layer) {
         case 2:
             switch(id) {
@@ -877,7 +877,7 @@ function milestoneDescription(layer, id){
                 return "弦重置时保留线升级。"
             break;
             case 13:
-                return "减少线可购买项5的成本缩放。"
+                return "减少线可购买项5的成本折算。"
             break;
             case 14:
                 return "线可购买项不再消耗任何资源。"

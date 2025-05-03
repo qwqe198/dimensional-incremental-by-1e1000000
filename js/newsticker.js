@@ -402,7 +402,7 @@ function updateNewsArray() {
     [() => "描述说-" + format(99) + "%，但实际是-" + format(99.5) + "% (x" + (Math.random() < 0.01 ? "5e-3" : "0.005") + ")", true],
     // 1%几率生成5e-3
     // 参考：2021年修复显示bug的一个Pull Request描述
-    [() => "包括：成就" + formatWhole(270) + "奖励" + (Math.random() < 0.1 ? "从未" : "总是") + "被应用；成就" + formatWhole(270) + "奖励缩放比预期" + format(10) + "倍" + (Math.random() < 0.1 ? "慢" : "快"), true],
+    [() => "包括：成就" + formatWhole(270) + "奖励" + (Math.random() < 0.1 ? "从未" : "总是") + "被应用；成就" + formatWhole(270) + "奖励折算比预期" + format(10) + "倍" + (Math.random() < 0.1 ? "慢" : "快"), true],
     // 1%几率同时生成"从未"和"慢"
     // 参考：2021年列出旧成就270bug的一个Pull Request描述
     [() => "生成" + format(slogadd(Math.floor(Math.random()*20001+80000)**2*16384, Math.random() < 0.01 ? Math.random()+0.011 : 0).floor()) + "个h0nde账户...", true],
