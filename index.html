@@ -77,7 +77,7 @@
         </td></tr>
       </table><br>
     <div id="Tab1St1" class="center">
-      你有 <b id="layer1amt" style="font-size: 24px;"></b> 点, 每秒生成 <b id="layer1eff" style="font-size: 24px;"></b> 点。<br>
+      你有 <b id="layer1amt" style="font-size: 24px;"></b> 点, 每秒生成 <b id="layer1eff" style="font-size: 24px;"></b> 点数。<br>
       <span id="layer1sc" class="resSoftcap"></span>
       <button onclick="LAYERS.doReset(1)" id="layer1reset" class="layerButton">
         重置获得 <b id="layer1gain"></b> 点<br>
@@ -175,7 +175,7 @@
     </table>
     </div>
     <div id="Tab1St2" class="center">
-      你有 <b id="layer2amt" style="font-size: 24px;"></b> 线, 基于点数将点获取量乘以 <b id="layer2eff" style="font-size: 24px;"></b>。<br>
+      你有 <b id="layer2amt" style="font-size: 24px;"></b> 线, 基于点将点数获取量乘以 <b id="layer2eff" style="font-size: 24px;"></b>。<br>
       <span id="layer2sc" class="resSoftcap"></span>
       <button onclick="LAYERS.doReset(2)" id="layer2reset" class="layerButton">
         重置获得 <b id="layer2gain"></b> 线<br>
@@ -190,7 +190,7 @@
           <button onclick="subsubtab(1,2,2)" id="tab1st2_2" class="subsubtabButton center">线段</button>
         </td>
         <td>
-          <button onclick="subsubtab(1,2,3)" id="tab1st2_3" class="subsubtabButton center">字符串</button>
+          <button onclick="subsubtab(1,2,3)" id="tab1st2_3" class="subsubtabButton center">弦</button>
         </td>
       </tr>
       </table><br>
@@ -335,9 +335,9 @@
       </table>
       </div>
       <div id="Tab1St2_3" class="center">
-        你有 <b id="stringLength" style="font-size: 24px;"></b> 字符串, 将线段获取量和效果提高 <b id="stringEff" style="font-size: 24px;"></b>。<br>
+        你有 <b id="stringLength" style="font-size: 24px;"></b> 弦, 将线段获取量和效果提高 <b id="stringEff" style="font-size: 24px;"></b>。<br>
         <button onclick="LAYERS.stringReset()" id="stringReset" class="layerButton">
-          重置线段以延长字符串长度 <b id="stringGain"></b><br>
+          重置线段以延长弦的长度 <b id="stringGain"></b><br>
           下次在 <b id="lineSegAmt2"></b>/<b id="stringReq"></b> 线段
         </button>
       </div>

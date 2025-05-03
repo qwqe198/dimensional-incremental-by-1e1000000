@@ -95,13 +95,13 @@ function upgradeDescription(layer, id){
                 return "将点获取乘以log10(log10(点数))。"
             break;
             case 4:
-                return "可以购买最大点数，点效果指数^(1+0.032*log10(点))，软上限为^" + format(1.16,4) + "。"
+                return "可以购买最大点，点效果指数^(1+0.032*log10(点))，软上限为^" + format(1.16,4) + "。"
             break;
             case 5:
                 return "将上述升级效果提高log(点)^0.5。"
             break;
             case 6:
-                return "将线效果提高点数^0.35。"
+                return "将线效果提高数^0.35。"
             break;
             case 7:
                 return "将点到线段获取指数的数量级增加1。"
@@ -161,7 +161,7 @@ function upgradeDescription(layer, id){
                 return "第4个点升级软上限根据线减弱。"
             break;
             case 6:
-                return "每个线级增加点获取1%。"
+                return "每个线段的数量级增加点获取1%。"
             break;
             case 7:
                 return "将线到线段获取指数乘以1.13，线段获取乘以1.035。"
@@ -471,7 +471,7 @@ function buyableDescription(layer, id){
                 return "每级增加" + format(buyableEffectBase(layer,id)) + "到点到线段获取指数的数量级，软上限为+" + format(10) + "。"
             break;
             case 3:
-                return "将点获取乘以" + format(buyableEffectBase(layer,id)) + "每" + (player.upgrade[1].includes(13) ? "" : "平方根 ") + "级，软上限为" + format(1e8) + "倍。"
+                return "将点获取乘以" + format(buyableEffectBase(layer,id)) + "每" + (player.upgrade[1].includes(13) ? "" : "平方根") + "级，软上限为" + format(1e8) + "倍。"
             break;
             case 4:
                 return "将点数获取提高" + format(buyableEffectBase(layer,id)) + "每级。"
@@ -847,10 +847,10 @@ function milestoneDescription(layer, id){
                 return "解锁线段。"
             break;
             case 3:
-                return "始终可以购买最大点数。"
+                return "始终可以购买最大点。"
             break;
             case 4:
-                return "自动购买点数且不重置任何内容。" + `<br>` + "将点数获取乘以10^10^线。"
+                return "自动购买点且不重置任何内容。" + `<br>` + "将点数获取乘以10^10^线。"
             break;
             case 5:
                 return "解锁弦。" + `<br>` + "线重置时保留点升级。"
