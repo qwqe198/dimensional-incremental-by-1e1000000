@@ -161,7 +161,7 @@ function upgradeDescription(layer, id){
                 return "第4个点升级软上限根据线减弱。"
             break;
             case 6:
-                return "每个线段的数量级增加点获取1%。"
+                return "每个线段购买项等级增加点获取1%。"
             break;
             case 7:
                 return "将线到线段获取指数乘以1.13，线段获取乘以1.035。"

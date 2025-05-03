@@ -55,7 +55,9 @@ function updateHTML(){
       document.getElementById("layer" + i + "extra").innerHTML = LAYERS.canGainMax(i)?"下一个":"需求"
       document.getElementById("layer" + i + "sc").style.display = (player.prestige[i].gte(LAYERS.gainSoftcap(i)) && !AFactived) ? "initial" : "none"
       document.getElementById("layer" + i + "sc").style.color = (AFactived ? "#000000" : "#FF0000")
-      document.getElementById("layer" + i + "sc").innerHTML = LAYERS.softcapExp(i).eq(1/0) ? resourceNameCapital[i] + ` amount are hardcapped at <b>` + format(LAYERS.gainSoftcap(i)) + `</b><br>` : resourceNameCapital[i] + ` amount past <b>` + format(LAYERS.gainSoftcap(i)) + `</b> are <b>` + format(LAYERS.softcapExp(i),4) + `</b>th rooted.<br>`
+      document.getElementById("layer" + i + "sc").innerHTML = LAYERS.softcapExp(i).eq(1/0) ? 
+      resourceNameCapital[i] + `数量被硬上限限制在<b>` + format(LAYERS.gainSoftcap(i)) + `</b><br>` : 
+      resourceNameCapital[i] + `数量超过<b>` + format(LAYERS.gainSoftcap(i)) + `</b>的部分将被开<b>` + format(LAYERS.softcapExp(i),4) + `</b>次方根。<br>`
       for (let j=1;j<=loadUpgrades[i];j++){ // upgrades
         // border
         document.getElementById("layer" + i + "upg" + j).style.borderColor = (AFactived ? "#000000" : (player.upgrade[i].includes(j) || canAffordUpgrade(i,j) ? "#00FF00" : "#FF0000"))
@@ -143,8 +145,8 @@ function updateHTML(){
   }
 }
       
-const resourceName=[null,"dots","lines"]
-const resourceNameCapital=[null,"Dots","Lines"]
+const resourceName=[null,"Dots","lines"]
+const resourceNameCapital=[null,"点","线"]
 const optionList=[["Default","Standard","Mixed","Up arrow","Standard (Up arrow)","Mixed (Up arrow)","Bird array","Letter (UCF)","Letter (BCF)","Number Troll","Letter Troll","Base64","Reverse","???"],["Off","On"],["Off","On"]]
 const optionName=["notation","debug","fullStandard"]
 
