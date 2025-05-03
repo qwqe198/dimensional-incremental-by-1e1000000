@@ -52,7 +52,7 @@ function updateHTML(){
       document.getElementById("layer" + i + "req").innerHTML = format(LAYERS.canGainMax(i)?LAYERS.nextReq(i):LAYERS.req(i))
       document.getElementById("layer" + i + "base").innerHTML = format(LAYERS.base(i))
       document.getElementById("layer" + i + "eff").innerHTML = format(LAYERS.eff(i))
-      document.getElementById("layer" + i + "extra").innerHTML = LAYERS.canGainMax(i)?"Next at":"Require"
+      document.getElementById("layer" + i + "extra").innerHTML = LAYERS.canGainMax(i)?"下一个":"需求"
       document.getElementById("layer" + i + "sc").style.display = (player.prestige[i].gte(LAYERS.gainSoftcap(i)) && !AFactived) ? "initial" : "none"
       document.getElementById("layer" + i + "sc").style.color = (AFactived ? "#000000" : "#FF0000")
       document.getElementById("layer" + i + "sc").innerHTML = LAYERS.softcapExp(i).eq(1/0) ? resourceNameCapital[i] + ` amount are hardcapped at <b>` + format(LAYERS.gainSoftcap(i)) + `</b><br>` : resourceNameCapital[i] + ` amount past <b>` + format(LAYERS.gainSoftcap(i)) + `</b> are <b>` + format(LAYERS.softcapExp(i),4) + `</b>th rooted.<br>`
