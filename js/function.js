@@ -101,7 +101,7 @@ function upgradeDescription(layer, id){
                 return "将上述升级效果提高log(点)^0.5。"
             break;
             case 6:
-                return "将线效果提高数^0.35。"
+                return "将线效果指数提高到点^0.35。"
             break;
             case 7:
                 return "将点到线段获取指数的数量级增加1。"
