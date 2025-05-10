@@ -86,7 +86,7 @@ function upgradeDescription(layer, id){
             case 1:
                 x = new ExpantaNum(1)
                 if (player.upgrade[1].includes(5)) x = x.mul(upgradeEffect(1,5))
-                return "将点效果乘以点数的" + (x.eq(1) ? "点数次方。" : "(点数*" + format(x,4) + ")次方。" )
+                return "将点效果乘以点的" + (x.eq(1) ? "点次方。" : "(点数*" + format(x,4) + ")次方。" )
             break;
             case 2:
                 return "将点效果乘以点数的log10对数点数次方。"
